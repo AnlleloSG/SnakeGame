@@ -24,16 +24,20 @@ while len(map_objects) < NUM_OF_NUMBER_OBJECTS:
 		map_objects.append(new_position)
 
 while len(map_objects) > 0:
+	# Condition for not touching the same body
+	if my_position in tail[1:]:
+		print("You can't touch your own body. YOU DIED")
+		exit(0)
 	os.system("cls")
 	print("+" + "-" * MAP_WIDTH * 3 + "+" )
 	for cordinate_y in range(MAP_HEIGHT):
-		
+	
 		print("|", end="")
 		
 		for cordinate_x in range(MAP_WIDTH):
 			
 			char_to_draw = " "
-			
+
 			for map_object in map_objects:
 				if map_object == list([cordinate_x,cordinate_y]):
 					char_to_draw = "o"
